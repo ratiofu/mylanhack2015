@@ -28,3 +28,7 @@ node_modules
 .lock-wscript
 
 .DS_Store
+db/
+extension.zip
+extension_src/
+
