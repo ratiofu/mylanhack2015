@@ -1,0 +1,10 @@
+{
+    "default": {
+        "name": "mylanProject",
+        "displayName": "Mylan Project Template",
+        "description": "Template for creating Mylan Project from MS Project XML exports",
+        "tiles": [
+            "project-overview"
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "clientUrl": "http://mylanproject-200502.use1.nitrousbox.com",
+    "port": "3000",
+    "development" : true,
+    "extensionInfo" : {
+      "uuid": "fe2ed685-fec0-40c4-89f2-9f44cb13c99a",
+      "name": "Mylan Projects Integration",
+      "description": "Publish MS Projects to Jive"
+    }
+}
