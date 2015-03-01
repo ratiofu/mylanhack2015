@@ -1,14 +1,18 @@
 var parse = require('./parse.js'),
-    path = './_spaces/',
-    fs = require('fs')
+    fs = require('fs'),
+    path = require('path'),
+    // place ID → task UID → Jive Task ID
+    mappingsDb = {}
 
 module.exports = {
-  compareCurrentAndNewProject: compareCurrentAndNewProject
+  compareCurrentAndNewProject: compareCurrentAndNewProject,
+  getJiveIdForTaskUid: getId,
+  putJiveIdForTaskUid: putId    
 }
 
-function compareCurrentAndNewProject(listener, rootPath, spaceId) {
+function compareCurrentAndNewProject(listener, rootPath, placeId) {
   var existingProject = { Tasks: {} },
-      basePath = rootPath + '/' + spaceId + '/'
+      basePath = rootPath + '/' + placeId + '/'
       existingPath = basePath + 'current.xml'
   if (fs.existsSync(existingPath)) {
     console.log('PARSING EXISTING', existingPath)
@@ -61,3 +65,31 @@ function compareTasks(existingProject, newProject, listener) {
 
 }
 
+function getId(placeId, taskUid) {
+  var mappings = ensureDb(placeId)
+  return mappings[taskUid]
+}
+
+function putId(placeId, taskUid, jiveTaskId) {
+  var mappings = ensureDb(placeId)
+  mappings[taskUid] = jiveTaskId
+  fs.writeFileSync(getPath(placeId), JSON.stringify(mappings))
+}
+
+function ensureDb(placeId) {
+  var mappings = mappingsDb[placeId]
+  if (mappings) {
+    return mappings
+  }
+  var path = getPath(placeId)
+  if (!fs.existsSync(path)) {
+    console.log('writing empty mappings file', path)
+    fs.writeFileSync(path, '{}')
+  }
+  mappings = require(path)
+  return mappingsDb[placeId] = mappings
+}
+
+function getPath(placeId) {
+  return path.normalize(__dirname + '/db/_places/' + placeId + '/mappings.json')
+}
