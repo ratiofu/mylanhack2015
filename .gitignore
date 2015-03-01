@@ -31,4 +31,6 @@ node_modules
 db/
 extension.zip
 extension_src/
+_tmp/
+
 

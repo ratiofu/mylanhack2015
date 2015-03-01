@@ -1,0 +1,21 @@
+{
+    "sampleData" : {
+        "title" : "Upcoming Tasks",
+        "contents" : [ {
+            "text" : "(upload an MS Project XML export to see tasks)"
+        } ],
+        "config" : {
+               "listStyle" : "contentList"
+        }
+    },
+    "displayName" : "Upcoming Tasks",
+    "name" : "upcoming-tasks",
+    "description" : "Shows tasks that are due soon",
+    "style" : "LIST",
+    "icons" : {
+        "16" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png",
+        "48" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png",
+        "128" : "https://community.jivesoftware.com/servlet/JiveServlet/showImage/102-99994-1-1023036/j.png"
+    },
+    "action": "/upcoming-tasks/action"
+}

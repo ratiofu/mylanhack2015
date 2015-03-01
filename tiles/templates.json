@@ -4,7 +4,7 @@
         "displayName": "Mylan Project Template",
         "description": "Template for creating Mylan Project from MS Project XML exports",
         "tiles": [
-            "project-overview"
+            "upcoming-tasks", "upcoming-tasks", "stream-integration"
         ]
     }
 }
